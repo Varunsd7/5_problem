@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Utility Functions</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7fc;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: #34495e;
+      margin-bottom: 10px;
+    }
+
+    .output {
+      margin-top: 10px;
+      padding: 15px;
+      background-color: #ecf0f1;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      color: #2c3e50;
+      word-wrap: break-word;
+      border-left: 4px solid #3498db;
+    }
+
+    .output strong {
+      color: #2980b9;
+    }
+
+    .button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+      margin-top: 20px;
+    }
+
+    .button:hover {
+      background-color: #2980b9;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Utility Functions</h1>
+  <div class="container">
+    <div class="section">
+      <h2>1. Format Number as Currency:</h2>
+      <p class="output" id="currency"></p>
+    </div>
+
+    <div class="section">
+      <h2>2. Generate Random String:</h2>
+      <p class="output" id="randomString"></p>
+    </div>
+
+    <div class="section">
+      <h2>3. Check if String Starts With Another String:</h2>
+      <p class="output" id="startsWith"></p>
+    </div>
+
+    <div class="section">
+      <h2>4. Trim String:</h2>
+      <p class="output" id="trimmedString"></p>
+    </div>
+
+    <div class="section">
+      <h2>5. Convert Object to String:</h2>
+      <p class="output" id="objectString"></p>
+    </div>
+
+    <div class="section">
+      <h2>6. Check if String Contains Substring:</h2>
+      <p class="output" id="containsSubstring"></p>
+    </div>
+
+    <button class="button" onclick="window.location.reload();">Refresh</button>
+  </div>
+
+  <script>
+    // Function to format numbers as currency strings
+    function formatCurrency(amount) {
+      return '$' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    }
+
+    // Function to generate a random string of a given length
+    function generateRandomString(length) {
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let result = '';
+      const charactersLength = characters.length;
+      for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return result;
+    }
+
+    // Function to check if a string starts with another string
+    function startsWith(str, prefix) {
+      return str.startsWith(prefix);
+    }
+
+    // Function to trim a string
+    function trimString(str) {
+      return str.trim();
+    }
+
+    // Function to convert objects to strings
+    function objectToString(obj) {
+      return JSON.stringify(obj);
+    }
+
+    // Function to check if a string contains a substring
+    function containsSubstring(str, substring) {
+      return str.includes(substring);
+    }
+
+    // Example usages
+
+    const number = 1234567.89;
+    document.getElementById('currency').textContent = `Formatted currency: ${formatCurrency(number)}`;
+
+    const randomString = generateRandomString(10);
+    document.getElementById('randomString').textContent = `Random string: ${randomString}`;
+
+    const testString = "Hello, world!";
+    document.getElementById('startsWith').textContent = `Starts with 'Hello': ${startsWith(testString, "Hello")}`;
+
+    const strToTrim = "   Hello, World!   ";
+    document.getElementById('trimmedString').textContent = `Trimmed string: '${trimString(strToTrim)}'`;
+
+    const obj = { name: "John", age: 30 };
+    document.getElementById('objectString').textContent = `Object to string: ${objectToString(obj)}`;
+
+    const substringCheck = "This is a test string.";
+    document.getElementById('containsSubstring').textContent = `Contains 'test': ${containsSubstring(substringCheck, "test")}`;
+  </script>
+
+</body>
+</html>
